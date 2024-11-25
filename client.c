@@ -17,6 +17,14 @@ void affichageInfoClient(Client *c){
     printf("Solde: %d\n", c->solde);
 }
 
+void fermerCompte(Client *c){
+    strcpy(c->nom, "");
+    c->cin = 0;
+    c->solde = 0;
+    c->pin = 0;
+    c->solde = 0;
+}
+
 int retirerArgent(Client *c, int montant){
     if(montant > c->solde || montant <= 0){
         return -1;

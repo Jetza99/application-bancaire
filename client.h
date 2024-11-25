@@ -10,6 +10,7 @@ typedef struct {
 
 void affichageInfoClient(Client *c);
 void initClient(Client *c, char *nom, int cin, int pin, int solde);
+void fermerCompte(Client *c);
 int retirerArgent(Client *c, int montant);
 int depotArgent(Client *c, int montant);
 int validerClient(Client *c, int pin);

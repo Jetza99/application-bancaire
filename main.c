@@ -5,8 +5,9 @@
 
 // Function prototypes for menu options
 void clientMenu(Client *client);
-
 void agentMenu();
+void visiteurMenu();
+
 void exitProgram();
 
 int main() {
@@ -39,14 +40,14 @@ int main() {
                     affichageInfoClient(&client);
                     clientMenu(&client);
                 } else {
-                    printf("Invalid PIN. Returning to main menu.\n");
+                    printf("Code PIN invalide. Retour au menu principal.\n");
                 }
                 break;
             case 2:
                 agentMenu();
                 break;
             case 3:
-                option2();
+                visiteurMenu();
                 break;
             case 4:
                 exitProgram();
@@ -97,7 +98,18 @@ void clientMenu(Client *client) {
                 break;
             }
             case 3:
-                printf("La clôture du compte\n");
+                char confirmation;
+                printf("Etes-vous sûr de fermer votre compte ? (O/N) :");
+                scanf(" %c", &confirmation);
+                if(confirmation == 'o' || confirmation == 'O'){
+                    fermerCompte(client);
+                    printf("Votre compte a ete ferme avec succes.\n");
+                    return;
+                }else
+                {
+                    printf("Cloture du compte annulee.\n");
+                }
+                
                 break;
             case 4:
                 printf("Retour au menu principal.\n");
@@ -112,6 +124,10 @@ void clientMenu(Client *client) {
 
 void agentMenu() {
     printf("Menu Agent\n");
+}
+
+void visiteurMenu() {
+    printf("Menu Visiteur\n");
 }
 
 void exitProgram() {
